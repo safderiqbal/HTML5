@@ -1,9 +1,41 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
+﻿<!DOCTYPE html>
+<html>
 <head>
     <title>Blank Page</title>
 </head>
 <body>
+    <script type="text/javascript">
+        //Taken from http://programmingthomas.wordpress.com/2012/05/16/drawing-stars-with-html5-canvas/
+        function star(c, x, y, r, p, m) {
+            c.save();
+            c.beginPath();
+            c.translate(x, y);
+            c.moveTo(0, 0 - r);
+            for (var i = 0; i < p; i++) {
+                c.rotate(Math.PI / p);
+                c.lineTo(0, 0 - (r * m));
+                c.rotate(Math.PI / p);
+                c.lineTo(0, 0 - r);
+            }
+            c.fill();
+            c.restore();
+        }
+     </script>
+    <center><canvas id="testCanvas" width="300" height="150" style="border:1px solid #000000"></canvas>
+    <br />
+    <i>An attempt at the Chicago flag.</i></center>
 
+    <script type="text/javascript">
+        var doc = document.getElementById("testCanvas");
+        var ctx = doc.getContext("2d");
+        ctx.fillStyle = "red";
+        star(ctx, 75, 75, 20, 6, 0.5);
+        star(ctx, 125, 75, 20, 6, 0.5);
+        star(ctx, 175, 75, 20, 6, 0.5);
+        star(ctx, 225, 75, 20, 6, 0.5);
+        ctx.fillStyle = "#99DDFF";
+        ctx.fillRect(0, 0, 300, 40);
+        ctx.fillRect(0, 110, 300, 150);
+    </script>
 </body>
 </html>
